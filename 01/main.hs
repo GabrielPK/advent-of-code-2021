@@ -5,7 +5,7 @@ import qualified Data.Fixed as Fixed
 import System.IO ()
 
 parseInput :: String -> [Int]
-parseInput input = map read $ lines input ::[Int]
+parseInput input = map read $ lines input :: [Int]
 
 rollingSumsEfficient :: Int -> [Int] -> [Int]
 rollingSumsEfficient _ [] = error "Empty list!"
@@ -28,5 +28,4 @@ doProblem xs = calcNumIncreases (rollingSumsEfficient 3 xs) 0
 main :: IO ()
 main = do
         contents <- readFile "input.txt" 
-        putStr (show (doProblem (parseInput contents)))
-        -- putStr contents
+        putStrLn (show (doProblem (parseInput contents)))

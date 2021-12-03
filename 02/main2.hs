@@ -27,4 +27,4 @@ doProblem xs = horizontal * depth
 main :: IO ()
 main = do
         contents <- readFile "input2.txt" 
-        putStr (show (doProblem (parseInput contents)))
+        putStrLn (show (doProblem (parseInput contents)))
