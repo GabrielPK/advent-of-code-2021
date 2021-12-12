@@ -28,9 +28,6 @@ bin2dec = foldr (\c s -> s * 2 + c) 0 . reverse . map c2i
 findMode :: String -> Char
 findMode col = if average (map (read . (:"")) col :: [Int]) >= 0.5 then '1' else '0'
 
-findMode' :: String -> Char
-findMode' col = if average (map (read . (:"")) col :: [Int]) >= 0.5 then '0' else '1'
-
 findO2 :: [String] -> Int -> String
 findO2 [str] _ = str
 findO2 xs pos =
@@ -45,7 +42,7 @@ findCO2 xs pos =
     findCO2 (filter (\x -> curMode == x!!pos) xs) (pos + 1)
     where
         txs = transposeString xs
-        curMode = findMode' $ txs!!pos
+        curMode = flip' (findMode (txs!!pos))
 
 doProblem :: [String] -> Int
 doProblem xs =
